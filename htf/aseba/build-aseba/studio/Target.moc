@@ -1,0 +1,227 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'Target.h'
+**
+** Created: Fri Mar 30 17:55:50 2012
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "../../aseba/studio/Target.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'Target.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.6.2. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_Aseba__Target[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+      15,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+      15,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      20,   15,   14,   14, 0x05,
+      40,   15,   14,   14, 0x05,
+      63,   14,   14,   14, 0x05,
+      93,   85,   14,   14, 0x05,
+     136,  129,   14,   14, 0x05,
+     181,  160,   14,   14, 0x05,
+     235,  225,   14,   14, 0x05,
+     261,  225,   14,   14, 0x05,
+     311,  293,   14,   14, 0x05,
+     348,  225,   14,   14, 0x05,
+     389,  379,   14,   14, 0x05,
+     438,   15,   14,   14, 0x05,
+     495,  474,   14,   14, 0x05,
+     567,  549,   14,   14, 0x05,
+     626,  603,   14,   14, 0x05,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Aseba__Target[] = {
+    "Aseba::Target\0\0node\0nodeConnected(uint)\0"
+    "nodeDisconnected(uint)\0networkDisconnected()\0"
+    "id,data\0userEvent(uint,VariablesDataVector)\0"
+    "amount\0userEventsDropped(uint)\0"
+    "node,line,size,index\0"
+    "arrayAccessOutOfBounds(uint,uint,uint,uint)\0"
+    "node,line\0divisionByZero(uint,uint)\0"
+    "eventExecutionKilled(uint,uint)\0"
+    "node,line,message\0"
+    "nodeSpecificError(uint,uint,QString)\0"
+    "executionPosChanged(uint,uint)\0node,mode\0"
+    "executionModeChanged(uint,Target::ExecutionMode)\0"
+    "variablesMemoryEstimatedDirty(uint)\0"
+    "node,start,variables\0"
+    "variablesMemoryChanged(uint,uint,VariablesDataVector)\0"
+    "node,line,success\0breakpointSetResult(uint,uint,bool)\0"
+    "errorCode,errorAddress\0bootloaderAck(uint,uint)\0"
+};
+
+const QMetaObject Aseba::Target::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_Aseba__Target,
+      qt_meta_data_Aseba__Target, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Aseba::Target::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Aseba::Target::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Aseba::Target::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Aseba__Target))
+        return static_cast<void*>(const_cast< Target*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int Aseba::Target::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: nodeConnected((*reinterpret_cast< uint(*)>(_a[1]))); break;
+        case 1: nodeDisconnected((*reinterpret_cast< uint(*)>(_a[1]))); break;
+        case 2: networkDisconnected(); break;
+        case 3: userEvent((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< const VariablesDataVector(*)>(_a[2]))); break;
+        case 4: userEventsDropped((*reinterpret_cast< uint(*)>(_a[1]))); break;
+        case 5: arrayAccessOutOfBounds((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< uint(*)>(_a[3])),(*reinterpret_cast< uint(*)>(_a[4]))); break;
+        case 6: divisionByZero((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2]))); break;
+        case 7: eventExecutionKilled((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2]))); break;
+        case 8: nodeSpecificError((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3]))); break;
+        case 9: executionPosChanged((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2]))); break;
+        case 10: executionModeChanged((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< Target::ExecutionMode(*)>(_a[2]))); break;
+        case 11: variablesMemoryEstimatedDirty((*reinterpret_cast< uint(*)>(_a[1]))); break;
+        case 12: variablesMemoryChanged((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< const VariablesDataVector(*)>(_a[3]))); break;
+        case 13: breakpointSetResult((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3]))); break;
+        case 14: bootloaderAck((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2]))); break;
+        default: ;
+        }
+        _id -= 15;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void Aseba::Target::nodeConnected(unsigned  _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void Aseba::Target::nodeDisconnected(unsigned  _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void Aseba::Target::networkDisconnected()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, 0);
+}
+
+// SIGNAL 3
+void Aseba::Target::userEvent(unsigned  _t1, const VariablesDataVector & _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
+}
+
+// SIGNAL 4
+void Aseba::Target::userEventsDropped(unsigned  _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 4, _a);
+}
+
+// SIGNAL 5
+void Aseba::Target::arrayAccessOutOfBounds(unsigned  _t1, unsigned  _t2, unsigned  _t3, unsigned  _t4)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
+    QMetaObject::activate(this, &staticMetaObject, 5, _a);
+}
+
+// SIGNAL 6
+void Aseba::Target::divisionByZero(unsigned  _t1, unsigned  _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 6, _a);
+}
+
+// SIGNAL 7
+void Aseba::Target::eventExecutionKilled(unsigned  _t1, unsigned  _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 7, _a);
+}
+
+// SIGNAL 8
+void Aseba::Target::nodeSpecificError(unsigned  _t1, unsigned  _t2, const QString & _t3)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 8, _a);
+}
+
+// SIGNAL 9
+void Aseba::Target::executionPosChanged(unsigned  _t1, unsigned  _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 9, _a);
+}
+
+// SIGNAL 10
+void Aseba::Target::executionModeChanged(unsigned  _t1, Target::ExecutionMode _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 10, _a);
+}
+
+// SIGNAL 11
+void Aseba::Target::variablesMemoryEstimatedDirty(unsigned  _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 11, _a);
+}
+
+// SIGNAL 12
+void Aseba::Target::variablesMemoryChanged(unsigned  _t1, unsigned  _t2, const VariablesDataVector & _t3)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 12, _a);
+}
+
+// SIGNAL 13
+void Aseba::Target::breakpointSetResult(unsigned  _t1, unsigned  _t2, bool _t3)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 13, _a);
+}
+
+// SIGNAL 14
+void Aseba::Target::bootloaderAck(unsigned  _t1, unsigned  _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 14, _a);
+}
+QT_END_MOC_NAMESPACE

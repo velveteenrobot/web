@@ -1,0 +1,2 @@
+/usr/bin/ar cr libdashel.a  CMakeFiles/dashel.dir/dashel/dashel-posix.cpp.o CMakeFiles/dashel.dir/dashel/dashel-common.cpp.o
+/usr/bin/ranlib libdashel.a

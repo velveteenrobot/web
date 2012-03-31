@@ -1,0 +1,1 @@
+/usr/bin/c++   -O2 -g   CMakeFiles/asebamedulla.dir/medulla.cpp.o  -o asebamedulla -rdynamic ../libasebacompiler.a ../libasebacore.a -lQtDBus -ldbus-1 -lQtXml -lQtCore -lz -lgthread-2.0 -lglib-2.0 -lgobject-2.0 -lrt -lpthread -ldl /wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-dashel/libdashel.a 

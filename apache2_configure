@@ -1,0 +1,69 @@
+#!/bin/bash
+
+if [ "x$1" == "x--platform" ] ; then
+   ROOT_UID=0
+
+   if [ "$UID" -ne "$ROOT_UID" ]; then
+      echo "Must be run as root, use sudo."
+      exit 0
+   fi
+   robot=$2
+   icon=$3
+   displayname=$4
+   description=$5
+   launch=$6
+   platform=$7
+   if [ -f /etc/apache2/httpd.conf ]; then
+      if [ "$robot" == "pr2" ]; then
+         cat > /etc/apache2/httpd.conf << EOF
+DocumentRoot "/var/www"
+Alias /test /u/applications/ros
+
+        <Directory /u/applications/ros/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+DocumentRoot "/var/www"
+Alias /apps /opt/ros/electric/stacks
+
+        <Directory /opt/ros/electric/stacks/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+EOF
+      else 
+         cat > /etc/apache2/httpd.conf << EOF
+DocumentRoot "/var/www"
+Alias /apps /opt/ros/electric/stacks
+
+        <Directory /opt/ros/electric/stacks/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+EOF
+      fi
+   else
+      echo "Your apache2 installation does not have a file at /etc/apache2/httpd.conf."
+      echo "It will be necessary to manually configure apache2."
+      exit 0
+
+/etc/init.d/apache2 restart
+
+
+else
+   echo "Usage: $0 --platform <robottype>"
+   echo "              This will configure your apache2 installation. It looks for your apache2"
+   echo "              configuration files in /etc/apache2. If you have a non-standard installation"
+   echo "              please see the ROS Wiki for how to configure your installation."
+   echo "              WARNING: will overwrite existing files!"
+   echo "Example: $0 --platform pr2"
+fi
+
+

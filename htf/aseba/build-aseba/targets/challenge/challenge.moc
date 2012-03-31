@@ -1,0 +1,141 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'challenge.h'
+**
+** Created: Fri Mar 30 17:56:25 2012
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "../../../aseba/targets/challenge/challenge.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'challenge.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.6.2. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_Enki__ChallengeViewer[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       3,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      23,   22,   22,   22, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      38,   22,   22,   22, 0x09,
+      52,   22,   22,   22, 0x09,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Enki__ChallengeViewer[] = {
+    "Enki::ChallengeViewer\0\0windowClosed()\0"
+    "addNewRobot()\0removeRobot()\0"
+};
+
+const QMetaObject Enki::ChallengeViewer::staticMetaObject = {
+    { &ViewerWidget::staticMetaObject, qt_meta_stringdata_Enki__ChallengeViewer,
+      qt_meta_data_Enki__ChallengeViewer, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Enki::ChallengeViewer::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Enki::ChallengeViewer::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Enki::ChallengeViewer::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Enki__ChallengeViewer))
+        return static_cast<void*>(const_cast< ChallengeViewer*>(this));
+    return ViewerWidget::qt_metacast(_clname);
+}
+
+int Enki::ChallengeViewer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = ViewerWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: windowClosed(); break;
+        case 1: addNewRobot(); break;
+        case 2: removeRobot(); break;
+        default: ;
+        }
+        _id -= 3;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void Enki::ChallengeViewer::windowClosed()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+}
+static const uint qt_meta_data_LanguageSelectionDialog[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       0,    0, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_LanguageSelectionDialog[] = {
+    "LanguageSelectionDialog\0"
+};
+
+const QMetaObject LanguageSelectionDialog::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_LanguageSelectionDialog,
+      qt_meta_data_LanguageSelectionDialog, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &LanguageSelectionDialog::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *LanguageSelectionDialog::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *LanguageSelectionDialog::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_LanguageSelectionDialog))
+        return static_cast<void*>(const_cast< LanguageSelectionDialog*>(this));
+    return QDialog::qt_metacast(_clname);
+}
+
+int LanguageSelectionDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QDialog::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    return _id;
+}
+QT_END_MOC_NAMESPACE

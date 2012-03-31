@@ -1,0 +1,1 @@
+/usr/bin/c++   -O2 -g   CMakeFiles/udp.dir/examples/udp.cpp.o  -o udp -rdynamic libdashel.a 

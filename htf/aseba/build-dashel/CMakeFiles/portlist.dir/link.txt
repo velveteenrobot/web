@@ -1,0 +1,1 @@
+/usr/bin/c++   -O2 -g   CMakeFiles/portlist.dir/examples/portlist.cpp.o  -o portlist -rdynamic libdashel.a 

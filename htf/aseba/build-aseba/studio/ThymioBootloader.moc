@@ -1,0 +1,96 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'ThymioBootloader.h'
+**
+** Created: Fri Mar 30 17:55:50 2012
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "../../aseba/studio/plugins/ThymioBootloader.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'ThymioBootloader.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.6.2. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_Aseba__ThymioBootloaderDialog[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       6,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      31,   30,   30,   30, 0x08,
+      49,   30,   30,   30, 0x08,
+      60,   30,   30,   30, 0x08,
+      70,   30,   30,   30, 0x08,
+      99,   80,   30,   30, 0x08,
+     122,   30,   30,   30, 0x08,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Aseba__ThymioBootloaderDialog[] = {
+    "Aseba::ThymioBootloaderDialog\0\0"
+    "showFlashDialog()\0openFile()\0doFlash()\0"
+    "doClose()\0error_code,address\0"
+    "ackReceived(uint,uint)\0vmDisconnected(uint)\0"
+};
+
+const QMetaObject Aseba::ThymioBootloaderDialog::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_Aseba__ThymioBootloaderDialog,
+      qt_meta_data_Aseba__ThymioBootloaderDialog, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Aseba::ThymioBootloaderDialog::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Aseba::ThymioBootloaderDialog::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Aseba::ThymioBootloaderDialog::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Aseba__ThymioBootloaderDialog))
+        return static_cast<void*>(const_cast< ThymioBootloaderDialog*>(this));
+    if (!strcmp(_clname, "InvasivePlugin"))
+        return static_cast< InvasivePlugin*>(const_cast< ThymioBootloaderDialog*>(this));
+    if (!strcmp(_clname, "NodeToolInterface"))
+        return static_cast< NodeToolInterface*>(const_cast< ThymioBootloaderDialog*>(this));
+    return QDialog::qt_metacast(_clname);
+}
+
+int Aseba::ThymioBootloaderDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QDialog::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: showFlashDialog(); break;
+        case 1: openFile(); break;
+        case 2: doFlash(); break;
+        case 3: doClose(); break;
+        case 4: ackReceived((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2]))); break;
+        case 5: vmDisconnected((*reinterpret_cast< uint(*)>(_a[1]))); break;
+        default: ;
+        }
+        _id -= 6;
+    }
+    return _id;
+}
+QT_END_MOC_NAMESPACE

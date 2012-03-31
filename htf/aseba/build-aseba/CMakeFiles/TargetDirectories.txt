@@ -1,0 +1,15 @@
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/targets/challenge/CMakeFiles/asebachallenge.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/cmd/CMakeFiles/asebacmd.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/CMakeFiles/asebacompiler.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/CMakeFiles/asebacore.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/dump/CMakeFiles/asebadump.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/targets/enki-marxbot/CMakeFiles/asebamarxbot.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/medulla/CMakeFiles/asebamedulla.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/replay/CMakeFiles/asebaplay.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/targets/playground/CMakeFiles/asebaplayground.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/replay/CMakeFiles/asebarec.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/studio/CMakeFiles/asebastudio.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/switch/CMakeFiles/asebaswitch.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/tests/CMakeFiles/asebatest.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/CMakeFiles/asebavm.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-aseba/CMakeFiles/asebavmbuffer.dir

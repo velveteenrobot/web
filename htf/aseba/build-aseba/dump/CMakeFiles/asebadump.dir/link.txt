@@ -1,0 +1,1 @@
+/usr/bin/c++   -O2 -g   CMakeFiles/asebadump.dir/dump.cpp.o  -o asebadump -rdynamic ../libasebacore.a /wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-dashel/libdashel.a 

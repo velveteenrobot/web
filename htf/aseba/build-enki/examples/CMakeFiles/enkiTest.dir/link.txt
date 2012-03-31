@@ -1,0 +1,1 @@
+/usr/bin/c++   -O2 -g   CMakeFiles/enkiTest.dir/enkiTest.cpp.o  -o enkiTest -rdynamic -L/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-enki ../enki/libenki.a -Wl,-rpath,/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-enki 

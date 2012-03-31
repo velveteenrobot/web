@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/playground/../../common/productids.h
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/playground/../../vm/../common/types.h
+stdlib.h
+-
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/playground/../../vm/natives.h
+../common/types.h
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/playground/../../vm/../common/types.h
+vm.h
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/playground/../../vm/vm.h
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/playground/../../vm/vm.h
+../common/types.h
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/playground/../../vm/../common/types.h
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/playground/playground-vm-description.c
+../../vm/natives.h
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/playground/../../vm/natives.h
+../../common/productids.h
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/playground/../../common/productids.h
+

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libasebavmbuffer.a  CMakeFiles/asebavmbuffer.dir/transport/buffer/vm-buffer.c.o
+/usr/bin/ranlib libasebavmbuffer.a

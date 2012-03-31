@@ -1,0 +1,303 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'DashelTarget.h'
+**
+** Created: Fri Mar 30 17:55:50 2012
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "../../aseba/studio/DashelTarget.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'DashelTarget.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.6.2. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_Aseba__DashelConnectionDialog[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       4,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      31,   30,   30,   30, 0x0a,
+      49,   30,   30,   30, 0x0a,
+      70,   30,   30,   30, 0x0a,
+      91,   30,   30,   30, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Aseba__DashelConnectionDialog[] = {
+    "Aseba::DashelConnectionDialog\0\0"
+    "netGroupChecked()\0serialGroupChecked()\0"
+    "customGroupChecked()\0"
+    "setupOkStateFromListSelection()\0"
+};
+
+const QMetaObject Aseba::DashelConnectionDialog::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_Aseba__DashelConnectionDialog,
+      qt_meta_data_Aseba__DashelConnectionDialog, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Aseba::DashelConnectionDialog::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Aseba::DashelConnectionDialog::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Aseba::DashelConnectionDialog::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Aseba__DashelConnectionDialog))
+        return static_cast<void*>(const_cast< DashelConnectionDialog*>(this));
+    return QDialog::qt_metacast(_clname);
+}
+
+int Aseba::DashelConnectionDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QDialog::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: netGroupChecked(); break;
+        case 1: serialGroupChecked(); break;
+        case 2: customGroupChecked(); break;
+        case 3: setupOkStateFromListSelection(); break;
+        default: ;
+        }
+        _id -= 4;
+    }
+    return _id;
+}
+static const uint qt_meta_data_Aseba__DashelInterface[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       2,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       2,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      32,   24,   23,   23, 0x05,
+      59,   23,   23,   23, 0x05,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Aseba__DashelInterface[] = {
+    "Aseba::DashelInterface\0\0message\0"
+    "messageAvailable(Message*)\0"
+    "dashelDisconnection()\0"
+};
+
+const QMetaObject Aseba::DashelInterface::staticMetaObject = {
+    { &QThread::staticMetaObject, qt_meta_stringdata_Aseba__DashelInterface,
+      qt_meta_data_Aseba__DashelInterface, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Aseba::DashelInterface::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Aseba::DashelInterface::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Aseba::DashelInterface::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Aseba__DashelInterface))
+        return static_cast<void*>(const_cast< DashelInterface*>(this));
+    if (!strcmp(_clname, "Dashel::Hub"))
+        return static_cast< Dashel::Hub*>(const_cast< DashelInterface*>(this));
+    return QThread::qt_metacast(_clname);
+}
+
+int Aseba::DashelInterface::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QThread::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: messageAvailable((*reinterpret_cast< Message*(*)>(_a[1]))); break;
+        case 1: dashelDisconnection(); break;
+        default: ;
+        }
+        _id -= 2;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void Aseba::DashelInterface::messageAvailable(Message * _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void Aseba::DashelInterface::dashelDisconnection()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, 0);
+}
+static const uint qt_meta_data_Aseba__SignalingDescriptionsManager[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      44,   37,   36,   36, 0x05,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Aseba__SignalingDescriptionsManager[] = {
+    "Aseba::SignalingDescriptionsManager\0"
+    "\0nodeId\0nodeDescriptionReceivedSignal(uint)\0"
+};
+
+const QMetaObject Aseba::SignalingDescriptionsManager::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_Aseba__SignalingDescriptionsManager,
+      qt_meta_data_Aseba__SignalingDescriptionsManager, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Aseba::SignalingDescriptionsManager::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Aseba::SignalingDescriptionsManager::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Aseba::SignalingDescriptionsManager::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Aseba__SignalingDescriptionsManager))
+        return static_cast<void*>(const_cast< SignalingDescriptionsManager*>(this));
+    if (!strcmp(_clname, "DescriptionsManager"))
+        return static_cast< DescriptionsManager*>(const_cast< SignalingDescriptionsManager*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int Aseba::SignalingDescriptionsManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: nodeDescriptionReceivedSignal((*reinterpret_cast< uint(*)>(_a[1]))); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void Aseba::SignalingDescriptionsManager::nodeDescriptionReceivedSignal(unsigned  _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+static const uint qt_meta_data_Aseba__DashelTarget[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       4,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      21,   20,   20,   20, 0x09,
+      48,   40,   20,   20, 0x09,
+      76,   20,   20,   20, 0x09,
+     107,  102,   20,   20, 0x09,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Aseba__DashelTarget[] = {
+    "Aseba::DashelTarget\0\0updateUserEvents()\0"
+    "message\0messageFromDashel(Message*)\0"
+    "disconnectionFromDashel()\0node\0"
+    "nodeDescriptionReceived(uint)\0"
+};
+
+const QMetaObject Aseba::DashelTarget::staticMetaObject = {
+    { &Target::staticMetaObject, qt_meta_stringdata_Aseba__DashelTarget,
+      qt_meta_data_Aseba__DashelTarget, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Aseba::DashelTarget::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Aseba::DashelTarget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Aseba::DashelTarget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Aseba__DashelTarget))
+        return static_cast<void*>(const_cast< DashelTarget*>(this));
+    return Target::qt_metacast(_clname);
+}
+
+int Aseba::DashelTarget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = Target::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: updateUserEvents(); break;
+        case 1: messageFromDashel((*reinterpret_cast< Message*(*)>(_a[1]))); break;
+        case 2: disconnectionFromDashel(); break;
+        case 3: nodeDescriptionReceived((*reinterpret_cast< uint(*)>(_a[1]))); break;
+        default: ;
+        }
+        _id -= 4;
+    }
+    return _id;
+}
+QT_END_MOC_NAMESPACE

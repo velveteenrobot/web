@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/enki-marxbot/../../vm/../common/types.h
+stdlib.h
+-
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/enki-marxbot/../../vm/natives.h
+../common/types.h
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/enki-marxbot/../../vm/../common/types.h
+vm.h
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/enki-marxbot/../../vm/vm.h
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/enki-marxbot/../../vm/vm.h
+../common/types.h
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/enki-marxbot/../../vm/../common/types.h
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/enki-marxbot/AsebaMarxbot-vm-descriptions.c
+../../vm/natives.h
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/aseba/targets/enki-marxbot/../../vm/natives.h
+

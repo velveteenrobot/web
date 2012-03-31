@@ -1,0 +1,2 @@
+/usr/bin/ar cr libasebacore.a  CMakeFiles/asebacore.dir/utils/FormatableString.cpp.o CMakeFiles/asebacore.dir/utils/utils.cpp.o CMakeFiles/asebacore.dir/utils/HexFile.cpp.o CMakeFiles/asebacore.dir/msg/msg.cpp.o CMakeFiles/asebacore.dir/msg/descriptions-manager.cpp.o
+/usr/bin/ranlib libasebacore.a

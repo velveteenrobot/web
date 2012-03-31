@@ -1,0 +1,2 @@
+/usr/bin/ar cr libasebavm.a  CMakeFiles/asebavm.dir/vm/vm.c.o CMakeFiles/asebavm.dir/vm/natives.c.o
+/usr/bin/ranlib libasebavm.a

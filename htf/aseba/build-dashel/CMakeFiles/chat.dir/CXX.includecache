@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/dashel/dashel/dashel.h
+string
+-
+set
+-
+map
+-
+vector
+-
+deque
+-
+stdexcept
+-
+
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/dashel/examples/chat.cpp
+dashel/dashel.h
+-
+iostream
+-
+cassert
+-
+

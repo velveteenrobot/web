@@ -1,0 +1,4 @@
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-enki/enki/CMakeFiles/enki.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-enki/examples/CMakeFiles/enkiTest.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-enki/viewer/CMakeFiles/enkiplayground.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-enki/viewer/CMakeFiles/enkiviewer.dir

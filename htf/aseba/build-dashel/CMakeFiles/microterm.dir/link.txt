@@ -1,0 +1,1 @@
+/usr/bin/c++   -O2 -g   CMakeFiles/microterm.dir/examples/microterm.cpp.o  -o microterm -rdynamic libdashel.a 

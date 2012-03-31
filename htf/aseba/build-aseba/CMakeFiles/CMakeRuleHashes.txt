@@ -1,0 +1,18 @@
+# Hashes of file build rules.
+a9b258fe4675eccb987473c7a54ecd71 medulla/medulla.moc
+fafe38cd6fa6c81303ae22ad47018954 studio/AeslEditor.moc
+0023411c527868c849c72ae7ccd53fda studio/ClickableLabel.moc
+b5dbd487a73ee37d68298ff679c95c01 studio/CustomDelegate.moc
+f65b5e2ce967c502fa9e8423fe440dfc studio/DashelTarget.moc
+7a5d3cd23d096b91419cf483977c8b28 studio/EventViewer.moc
+d2e3991b124c5907331cbf5ce4e04d19 studio/FindDialog.moc
+14dcdaa9f8d050e7ab87181b1589955d studio/MainWindow.moc
+5832e87f891063e8a2374affe53c5534 studio/NamedValuesVectorModel.moc
+cc48bbce772670237a6b69e4bb016bfc studio/Target.moc
+96648b5b1b72db775e540b4d14462240 studio/TargetModels.moc
+6b79d5aae5fc344ddc888f6bc5f8dc72 studio/ThymioBootloader.moc
+f9c29b2da7618244a4e1f6ead9c0a2c2 studio/VariablesViewPlugin.moc
+a5a1917119a853652bc9a71db67d40fa studio/qrc_asebastudio.cxx
+5d8847f00b99c6de184feb12cdab5a2b targets/challenge/challenge.moc
+058f24635955524aa71ed6fbfad42132 targets/challenge/qrc_challenge-textures.cxx
+9c762db9317dd77040435dfdba9808d8 targets/playground/playground.moc

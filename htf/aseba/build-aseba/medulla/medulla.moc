@@ -1,0 +1,365 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'medulla.h'
+**
+** Created: Fri Mar 30 17:55:40 2012
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "../../aseba/medulla/medulla.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'medulla.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.6.2. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_Aseba__EventFilterInterface[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       1,   14, // classinfo
+      12,   16, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       7,       // signalCount
+
+ // classinfo: key, value
+      55,   28,
+
+ // signals: signature, parameters, type, tag, flags
+      85,   72,   71,   71, 0x45,
+     115,   71,   71,   71, 0x45,
+     130,   71,   71,   71, 0x45,
+     145,   71,   71,   71, 0x45,
+     161,  159,   71,   71, 0x45,
+     186,  159,   71,   71, 0x45,
+     210,  159,   71,   71, 0x45,
+
+ // slots: signature, parameters, type, tag, flags
+     250,  244,   71,  234, 0x4a,
+     284,  271,   71,  234, 0x4a,
+     322,  244,   71,  234, 0x4a,
+     343,  271,   71,  234, 0x4a,
+     381,   71,   71,  234, 0x4a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Aseba__EventFilterInterface[] = {
+    "Aseba::EventFilterInterface\0"
+    "ch.epfl.mobots.EventFilter\0D-Bus Interface\0"
+    "\0,name,values\0Event(quint16,QString,Values)\0"
+    "Test0(quint16)\0Test1(QString)\0"
+    "Test2(Values)\0,\0Test0_1(quint16,QString)\0"
+    "Test0_2(quint16,Values)\0Test1_2(QString,Values)\0"
+    "Q_NOREPLY\0event\0ListenEvent(quint16)\0"
+    "name,message\0ListenEventName(QString,QDBusMessage)\0"
+    "IgnoreEvent(quint16)\0"
+    "IgnoreEventName(QString,QDBusMessage)\0"
+    "Free()\0"
+};
+
+const QMetaObject Aseba::EventFilterInterface::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_Aseba__EventFilterInterface,
+      qt_meta_data_Aseba__EventFilterInterface, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Aseba::EventFilterInterface::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Aseba::EventFilterInterface::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Aseba::EventFilterInterface::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Aseba__EventFilterInterface))
+        return static_cast<void*>(const_cast< EventFilterInterface*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int Aseba::EventFilterInterface::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: Event((*reinterpret_cast< const quint16(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const Values(*)>(_a[3]))); break;
+        case 1: Test0((*reinterpret_cast< const quint16(*)>(_a[1]))); break;
+        case 2: Test1((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 3: Test2((*reinterpret_cast< const Values(*)>(_a[1]))); break;
+        case 4: Test0_1((*reinterpret_cast< const quint16(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
+        case 5: Test0_2((*reinterpret_cast< const quint16(*)>(_a[1])),(*reinterpret_cast< const Values(*)>(_a[2]))); break;
+        case 6: Test1_2((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const Values(*)>(_a[2]))); break;
+        case 7: ListenEvent((*reinterpret_cast< const quint16(*)>(_a[1]))); break;
+        case 8: ListenEventName((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QDBusMessage(*)>(_a[2]))); break;
+        case 9: IgnoreEvent((*reinterpret_cast< const quint16(*)>(_a[1]))); break;
+        case 10: IgnoreEventName((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QDBusMessage(*)>(_a[2]))); break;
+        case 11: Free(); break;
+        default: ;
+        }
+        _id -= 12;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void Aseba::EventFilterInterface::Event(const quint16 _t1, const QString & _t2, const Values & _t3)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void Aseba::EventFilterInterface::Test0(const quint16 _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void Aseba::EventFilterInterface::Test1(const QString & _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+
+// SIGNAL 3
+void Aseba::EventFilterInterface::Test2(const Values & _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
+}
+
+// SIGNAL 4
+void Aseba::EventFilterInterface::Test0_1(const quint16 _t1, const QString & _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 4, _a);
+}
+
+// SIGNAL 5
+void Aseba::EventFilterInterface::Test0_2(const quint16 _t1, const Values & _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 5, _a);
+}
+
+// SIGNAL 6
+void Aseba::EventFilterInterface::Test1_2(const QString & _t1, const Values & _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 6, _a);
+}
+static const uint qt_meta_data_Aseba__AsebaNetworkInterface[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       1,   14, // classinfo
+      14,   16, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // classinfo: key, value
+      57,   29,
+
+ // slots: signature, parameters, type, tag, flags
+      95,   74,   73,   73, 0x08,
+     147,  136,   73,   73, 0x08,
+     192,  179,   73,   73, 0x08,
+     235,  179,   73,   73, 0x08,
+     285,  278,   73,   73, 0x08,
+     351,  334,   73,  324, 0x0a,
+     397,   73,  385,   73, 0x0a,
+     432,  419,  412,   73, 0x0a,
+     469,  464,  385,   73, 0x0a,
+     522,  495,   73,  324, 0x0a,
+     600,  578,  571,   73, 0x0a,
+     642,  136,   73,  324, 0x0a,
+     686,  668,   73,  324, 0x0a,
+     745,   73,  729,   73, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Aseba__AsebaNetworkInterface[] = {
+    "Aseba::AsebaNetworkInterface\0"
+    "ch.epfl.mobots.AsebaNetwork\0D-Bus Interface\0"
+    "\0message,sourceStream\0"
+    "processMessage(Message*,Dashel::Stream*)\0"
+    "event,data\0sendEventOnDBus(quint16,Values)\0"
+    "filter,event\0listenEvent(EventFilterInterface*,quint16)\0"
+    "ignoreEvent(EventFilterInterface*,quint16)\0"
+    "filter\0filterDestroyed(EventFilterInterface*)\0"
+    "Q_NOREPLY\0fileName,message\0"
+    "LoadScripts(QString,QDBusMessage)\0"
+    "QStringList\0GetNodesList()\0qint16\0"
+    "node,message\0GetNodeId(QString,QDBusMessage)\0"
+    "node\0GetVariablesList(QString)\0"
+    "node,variable,data,message\0"
+    "SetVariable(QString,QString,Values,QDBusMessage)\0"
+    "Values\0node,variable,message\0"
+    "GetVariable(QString,QString,QDBusMessage)\0"
+    "SendEvent(quint16,Values)\0name,data,message\0"
+    "SendEventName(QString,Values,QDBusMessage)\0"
+    "QDBusObjectPath\0CreateEventFilter()\0"
+};
+
+const QMetaObject Aseba::AsebaNetworkInterface::staticMetaObject = {
+    { &QDBusAbstractAdaptor::staticMetaObject, qt_meta_stringdata_Aseba__AsebaNetworkInterface,
+      qt_meta_data_Aseba__AsebaNetworkInterface, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Aseba::AsebaNetworkInterface::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Aseba::AsebaNetworkInterface::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Aseba::AsebaNetworkInterface::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Aseba__AsebaNetworkInterface))
+        return static_cast<void*>(const_cast< AsebaNetworkInterface*>(this));
+    if (!strcmp(_clname, "DescriptionsManager"))
+        return static_cast< DescriptionsManager*>(const_cast< AsebaNetworkInterface*>(this));
+    return QDBusAbstractAdaptor::qt_metacast(_clname);
+}
+
+int Aseba::AsebaNetworkInterface::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QDBusAbstractAdaptor::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: processMessage((*reinterpret_cast< Message*(*)>(_a[1])),(*reinterpret_cast< Dashel::Stream*(*)>(_a[2]))); break;
+        case 1: sendEventOnDBus((*reinterpret_cast< const quint16(*)>(_a[1])),(*reinterpret_cast< const Values(*)>(_a[2]))); break;
+        case 2: listenEvent((*reinterpret_cast< EventFilterInterface*(*)>(_a[1])),(*reinterpret_cast< quint16(*)>(_a[2]))); break;
+        case 3: ignoreEvent((*reinterpret_cast< EventFilterInterface*(*)>(_a[1])),(*reinterpret_cast< quint16(*)>(_a[2]))); break;
+        case 4: filterDestroyed((*reinterpret_cast< EventFilterInterface*(*)>(_a[1]))); break;
+        case 5: LoadScripts((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QDBusMessage(*)>(_a[2]))); break;
+        case 6: { QStringList _r = GetNodesList();
+            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = _r; }  break;
+        case 7: { qint16 _r = GetNodeId((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QDBusMessage(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< qint16*>(_a[0]) = _r; }  break;
+        case 8: { QStringList _r = GetVariablesList((*reinterpret_cast< const QString(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = _r; }  break;
+        case 9: SetVariable((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const Values(*)>(_a[3])),(*reinterpret_cast< const QDBusMessage(*)>(_a[4]))); break;
+        case 10: { Values _r = GetVariable((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QDBusMessage(*)>(_a[3])));
+            if (_a[0]) *reinterpret_cast< Values*>(_a[0]) = _r; }  break;
+        case 11: SendEvent((*reinterpret_cast< const quint16(*)>(_a[1])),(*reinterpret_cast< const Values(*)>(_a[2]))); break;
+        case 12: SendEventName((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const Values(*)>(_a[2])),(*reinterpret_cast< const QDBusMessage(*)>(_a[3]))); break;
+        case 13: { QDBusObjectPath _r = CreateEventFilter();
+            if (_a[0]) *reinterpret_cast< QDBusObjectPath*>(_a[0]) = _r; }  break;
+        default: ;
+        }
+        _id -= 14;
+    }
+    return _id;
+}
+static const uint qt_meta_data_Aseba__Hub[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       4,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       2,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      12,   11,   11,   11, 0x05,
+      58,   37,   11,   11, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+     101,   11,   11,   11, 0x09,
+     128,   11,   11,   11, 0x09,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Aseba__Hub[] = {
+    "Aseba::Hub\0\0firstConnectionCreated()\0"
+    "message,sourceStream\0"
+    "messageAvailable(Message*,Dashel::Stream*)\0"
+    "firstConnectionAvailable()\0"
+    "requestDescription()\0"
+};
+
+const QMetaObject Aseba::Hub::staticMetaObject = {
+    { &QThread::staticMetaObject, qt_meta_stringdata_Aseba__Hub,
+      qt_meta_data_Aseba__Hub, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Aseba::Hub::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Aseba::Hub::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Aseba::Hub::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Aseba__Hub))
+        return static_cast<void*>(const_cast< Hub*>(this));
+    if (!strcmp(_clname, "Dashel::Hub"))
+        return static_cast< Dashel::Hub*>(const_cast< Hub*>(this));
+    return QThread::qt_metacast(_clname);
+}
+
+int Aseba::Hub::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QThread::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: firstConnectionCreated(); break;
+        case 1: messageAvailable((*reinterpret_cast< Message*(*)>(_a[1])),(*reinterpret_cast< Dashel::Stream*(*)>(_a[2]))); break;
+        case 2: firstConnectionAvailable(); break;
+        case 3: requestDescription(); break;
+        default: ;
+        }
+        _id -= 4;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void Aseba::Hub::firstConnectionCreated()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+}
+
+// SIGNAL 1
+void Aseba::Hub::messageAvailable(Message * _t1, Dashel::Stream * _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+QT_END_MOC_NAMESPACE

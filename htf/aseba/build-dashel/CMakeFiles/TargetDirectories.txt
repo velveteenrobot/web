@@ -1,0 +1,5 @@
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-dashel/CMakeFiles/chat.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-dashel/CMakeFiles/dashel.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-dashel/CMakeFiles/microterm.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-dashel/CMakeFiles/portlist.dir
+/wg/stor1a/selliott/ros_workspace/web/htf/aseba/build-dashel/CMakeFiles/udp.dir

@@ -1,0 +1,373 @@
+    <html>
+      <head>
+        <script type="text/javascript" src="http://brown-ros-pkg.googlecode.com/svn/tags/brown-ros-pkg/rosbridge/ros.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      </head>
+    <body onload="main()">
+<FORM>
+<script type="text/javascript">
+
+
+      var mode = "TURN";
+      //var pos_x;
+      //var pos_y;
+      //var x_k;
+      //var z_k;
+      //var WIDTH = 370;
+      //var HEIGHT = 376;
+      //var click = false;
+
+    function validateRadio(obj){
+        var image = document.getElementById("pointer_div");
+        if (document.getElementById("turn").checked) {
+          image.style.backgroundImage = 'url(turn_arrows.jpg)'; 
+          mode = "TURN";
+        } else if (document.getElementById("strafe").checked) {
+          image.style.backgroundImage = 'url(strafe_arrows.jpg)';//;width:370px;height:376px;";
+          mode = "STRAFE";
+        } 
+
+        }
+  function main() {
+
+      var appmanager_started = false;
+      var available_apps;
+      var message;
+      var newInterval;
+      var returned = true;
+      var running_apps;
+      var serv_returned = true;
+      var skipEvict = false;
+      var skipStart = false;
+      var url = "http://prm1.willowgarage.com/cgi-bin/control.py?action=GET_STATE";
+      var user;
+      var xmlHttpReq;
+      var x = 0;
+      var y = 0;
+      var z = 0;
+
+      var IN_USE = 0;
+      var OFF = 1;
+      var VALID = 2;
+
+
+      var connection = new ros.Connection("ws://prm:9091");
+      xmlHttpReq = CreateXmlHttpReq(function () {});
+        if (xmlHttpReq) {
+          XmlHttpGET(xmlHttpReq,"http://prm1.willowgarage.com/cgi-bin/control.py");
+        }
+      connection.setOnOpen(function (e) {
+        alert("connected to ROS.");
+        /*serv_returned = false;
+        connection.callService('/rosjs/services','[]',function(arr) {
+          for(var i=0;i<arr.length;i++){
+            //document.write(arr[i]+"<br/>");
+            if (arr[i].trim() == "/prm/list_apps") {
+              appmanager_started = true;
+            } 
+            serv_returned = true;
+           }
+
+        });
+        if (appmanager_started) {
+        returned = false; 
+        connection.callService('/prm/list_apps','[]',function (arr) {
+            //alert("Calling list apps initally!");
+            running_apps = arr.running_apps;
+            available_apps = arr.available_apps;
+            returned = true;
+            });
+        } */
+        xmlHttpReq = CreateXmlHttpReq(resultHandler);
+        if (xmlHttpReq) {
+          XmlHttpGET(xmlHttpReq, url);
+        } else {
+          alert("An error occured while attempting to process your request.");
+        }
+
+        });
+
+        function startApp() {
+          if (serv_returned) {
+            serv_returned = false;
+            connection.callService('/rosjs/services','[]',function(arr) {
+            for(var i=0;i<arr.length;i++){
+            //document.write(arr[i]+"<br/>");
+              if (arr[i].trim() == "/prm/list_apps") {
+                clearInterval(newInterval);
+                connection.callService('/prm/list_apps','[]',function (arr) {
+                  //alert("Calling list apps initally!");
+                  running_apps = arr.running_apps;
+                  available_apps = arr.available_apps;
+                  for (var k=0;k<running_apps.length;k++) {
+                    if (running_apps[k].name == "pr2_teleop_app/pr2_teleop") {
+                      returned = true;
+                      connection.callService('/rosjs/services','[]',function(arr) {
+                        for(var i=0;i<arr.length;i++){
+                          if (arr[i].trim() == "/mjpeg_server/get_loggers") {
+                            document.getElementById("app_elements").style.display = 'block';
+                            document.getElementById("video_stream").src = "http://10.0.11.145:8181/stream?topic=/camera/rgb/image_color";
+                            return;
+                          }
+                        }
+                      });
+                    }
+                  }  
+                  connection.callService('/prm/start_app', "[\"pr2_teleop_app/pr2_teleop\"]",function(resp) {
+                    alert("App started!")
+                    connection.callService('/rosjs/services','[]',function(arr) {
+                        for(var i=0;i<arr.length;i++){
+                          if (arr[i].trim() == "/mjpeg_server/get_loggers") {
+                            document.getElementById("app_elements").style.display = 'block';
+                            document.getElementById("video_stream").src = "http://10.0.11.145:8181/stream?topic=/camera/rgb/image_color";
+                            return;
+                          }
+                        }
+                    });
+                  });
+    
+                  returned = true;
+                });
+              } 
+              serv_returned = true;
+             }
+
+             });
+           }
+         }
+
+
+        function resultHandler () {
+        // request is 'ready'
+          if (xmlHttpReq.readyState == 4) {
+                // success
+                if (xmlHttpReq.status == 200) {
+                        alert("Success!");
+                        alert(xmlHttpReq.responseText); //is the content that was received from the request
+                        var tags = xmlHttpReq.responseText.split(/\r\n|\r|\n/);
+                        //document.write(tags.length);
+                        for(var i=0;i<tags.length;i++){
+                          //document.write("TAG: <br/>");
+                          //document.write(tags[i]+"<br/>");
+                          if (tags[i] == "STATE_IN_USE") {
+                            state = IN_USE;
+                            //alert("In use");
+                          }
+                          if (tags[i] == "STATE_VALID") {
+                            state = VALID;
+                            alert("Valid!");
+                            skipStart = false;
+                            skipEvict = false;
+                            //document.body.innerHTML = "";
+                            //newInterval = setInterval(showApps, 1000);
+                            //Show regular screen
+                            newInterval = setInterval(startApp,1000);
+                            //document.getElementById("app_elements").style.display = 'block';
+                            //document.getElementById("video_stream").src = "http://prm:8181/stream?topic=/wide_stereo/left/image_color/";
+                          }
+                          if (tags[i] == "STATE_OFF") {
+                            state = OFF;
+                            alert("Starting robot!");
+                            skipEvict = false;
+                            xmlHttpReq = CreateXmlHttpReq(startResultHandler);
+
+                            if (xmlHttpReq && !skipStart) {
+                              XmlHttpGET(xmlHttpReq, "http://prm1.willowgarage.com/cgi-bin/control.py?action=START_ROBOT");
+                            }
+
+                          }
+                          var splitLine = tags[i].split(" ");
+                          if (splitLine.length  > 1) {
+                            for(var j=0;j<splitLine.length;j++){
+                              if (splitLine[j] == "USER:") {
+                                if (!skipEvict) {
+                                  user = splitLine[j+1];
+                                  var evict = confirm("In use by: " + user +"\nWould you like to evict this user?");
+                                  if (evict) {
+                                    skipEvict = true;
+                                    xmlHttpReq = CreateXmlHttpReq(resultHandler);
+                                    if (xmlHttpReq) {
+                                      XmlHttpGET(xmlHttpReq, "http://prm1.willowgarage.com/cgi-bin/control.py?action=STOP_ROBOT");
+                                    
+                                    } 
+                                  } 
+                                 }
+                                  xmlHttpReq = CreateXmlHttpReq(resultHandler);
+                                  var m = 0;
+                                  while (state != OFF && state != VALID && m < 30) {
+                                    var t=setTimeout(function () {
+                                    XmlHttpGET(xmlHttpReq,"http://prm1.willowgarage.com/cgi-bin/control.py?action=GET_STATE"); 
+                                    },1000);
+                                    m++;
+                                  }      
+
+                              }
+                              if (splitLine[j] == "MESSAGE:") {
+                                message = splitLine[j+1];
+                                alert("Message is: " + message);
+                              }
+                            }  
+                          }
+                        }
+                      }
+
+                        
+                } else {
+                        //alert("There was a problem retrieving the data.");
+                }
+          
+        }
+
+        /*function startApp() {
+          var newInterval = setInterval(waitForAppManager,1000);
+          if (appmanager_started && returned) {
+            connection.callService('/prm/list_apps','[]',function (arr) {
+              //alert("Calling list apps before starting app!");
+              running_apps = arr.running_apps;
+              available_apps = arr.available_apps;
+              for (var k=0;k<running_apps.length;k++) {
+                if (running_apps[k].name == "pr2_teleop_app/pr2_teleop") {
+                  returned = true;
+                  return;
+                }
+              }
+              connection.callService('/prm/start_app', "['pr2_teleop_app/pr2_teleop']",function(resp) {
+                alert("App started!")
+              });
+              returned = true;
+            });
+          }
+        }*/
+
+        function startResultHandler () {
+        // request is 'ready'
+          if (xmlHttpReq.readyState == 4) {
+                // success
+                //alert("Ready!");
+                if (xmlHttpReq.status == 200) {
+                  //alert("200 Okay!"); 
+                  var k = 0;
+                  if (xmlHttpReq) {
+                    xmlHttpReq = CreateXmlHttpReq(resultHandler);
+                    skipStart = true;
+                    while (state != VALID && k < 30) {
+                      var t=setTimeout( function () {
+                      XmlHttpGET(xmlHttpReq,"http://prm1.willowgarage.com/cgi-bin/control.py?action=GET_STATE");
+                      },1000);
+                      k++;
+                    }
+                  } else {
+                        alert("An error occured while attempting to process your request.");
+                  } 
+                }
+          }
+        } 
+                    
+        
+        function CreateXmlHttpReq(handler) {
+        var xmlhttp = null;
+
+        if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+                // users with activeX off
+                try {
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {}
+        }
+
+        if (xmlhttp) xmlhttp.onreadystatechange = handler;
+
+        return xmlhttp;
+        }    
+
+        // XMLHttp send GEt request
+        function XmlHttpGET(xmlhttp, url) {
+        try {
+                xmlhttp.open("GET", url, true); 
+
+                xmlhttp.send(null);
+        } catch (e) {}
+        }
+
+    function handleKey(code, down) {
+          var scale = 0;
+          if (down == true) {
+            scale = 1;
+          }
+          switch (code) {
+          case 37:
+            //left
+            if (mode == "TURN") {
+              z = 1 * scale;
+            } else if (mode == "STRAFE") {
+              y = .5 * scale;
+            }
+            break;
+          case 38:
+            //up
+            x = .5 * scale;
+            break;
+          case 39:
+            //right 
+            if (mode == "TURN") {
+              z = -1 * scale;
+            } else if (mode == "STRAFE") {
+              y = -.5 * scale;
+            }
+            break;
+          case 40:
+            //down
+            x = -.5 * scale;
+            break;
+          }
+          pub();
+        }
+
+    function pub() {
+      if (mode == "TURN") {
+        connection.publish('/base_controller/command', 'geometry_msgs/Twist', '{"linear":{"x":' + x + ',"y":0,"z":0}, "angular":{"x":0,"y":0,"z":' + z + '}}');
+      } else if (mode == "STRAFE") {
+        connection.publish('/base_controller/command', 'geometry_msgs/Twist', '{"linear":{"x":' + x + ',"y":' + y + ',"z":0}, "angular":{"x":0,"y":0,"z":0}}');
+      }
+    }
+
+    document.addEventListener('keydown', function (e) {
+          handleKey(e.keyCode, true);
+        }, true);
+    document.addEventListener('keyup', function (e) {
+          handleKey(e.keyCode, false);
+        }, true);
+          
+
+    connection.setOnClose(function (e) {
+        //document.write('connection closed<br/>');
+        alert("Connection closed.");
+        xmlHttpReq = CreateXmlHttpReq(function () {});
+        if (xmlHttpReq) {
+          XmlHttpGET(xmlHttpReq,"http://prm1.willowgarage.com/cgi-bin/control.py");
+        }
+        window.location.reload();
+      });
+      connection.setOnError(function (e) {
+        //document.write('error!<br/>');
+        alert("Error!");
+      });
+
+
+      document.getElementById("turn").checked=true;
+
+    }
+        </script>
+<div id="app_elements" style="display: none;">
+<img id="video_stream" alt="real-time video feed" />
+<div style="float: right;">
+<input type="radio" name="a" value="turn" id="turn"  onclick="validateRadio(this)"> Turn </br>
+<input type="radio" name="a" value="strafe" id="strafe"  onclick="validateRadio(this)"> Strafe </br>
+
+<div id="pointer_div" style = "background-image:url('turn_arrows.jpg');width:370px;height:376px;"/>
+</div>
+</div>
+</FORM>
+    </body>
+    </html>
