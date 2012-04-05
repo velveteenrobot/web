@@ -1,7 +1,6 @@
 <!-- Begin
 
 function login(form) {
-  page = "web_abomination" + ".html";
   if (form.username.value != null && form.password.value != null) {
      connection.callService('/login','[\"' + form.username.value + "\", \"" + form.password.value + '\"]',function(resp) {
       if (resp != null && resp.token != 0) {
@@ -9,7 +8,9 @@ function login(form) {
         //Could put the token in the url, but not admin thing, super secret HTTP fun?
         var token = resp.token;
         var is_admin = resp.is_admin;
-        self.location.href = "web_abomination.html";
+        var url_array = window.location.href.split('/');
+        var url = 'http://' + url_array[2] + "web_abomination.html";
+        self.location.href = url;
       } else {
         alert("Bad try at logging in.");
       }
@@ -37,7 +38,8 @@ function newUser(form) {
 
 
 function main() {
-  var connection = new ros.Connection("ws://10.0.11.145:9091");
+  var url_array = window.location.href.split('/');
+  var connection = new ros.Connection("ws://" + url_array[2] + ":9091");
   connection.setOnClose(function (e) {
     alert('connection closed<br/>');
     //start up rosbridge, reload?
