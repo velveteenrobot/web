@@ -8,11 +8,6 @@ if [ "x$1" == "x--platform" ] ; then
       exit 0
    fi
    robot=$2
-   icon=$3
-   displayname=$4
-   description=$5
-   launch=$6
-   platform=$7
    if [ -f /etc/apache2/httpd.conf ]; then
       if [ "$robot" == "pr2" ]; then
          cat > /etc/apache2/httpd.conf << EOF
@@ -53,7 +48,7 @@ EOF
       echo "Your apache2 installation does not have a file at /etc/apache2/httpd.conf."
       echo "It will be necessary to manually configure apache2."
       exit 0
-
+   fi
 /etc/init.d/apache2 restart
 
 
