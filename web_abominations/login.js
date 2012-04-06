@@ -20,7 +20,7 @@ function login(form) {
           var token = resp.token;
           var is_admin = resp.is_admin;
           var url_array = window.location.href.split('/');
-          var url = 'http://' + url_array[2] + "/web_abominations/web_abomination.html";
+          var url = 'http://' + url_array[2] + "/web_abominations/web_abomination.html?tkn=" + token + "&uname=" + form.username.value + "&ad=" + is_admin;
           self.location.href = url;
         } else {
           alert("Bad try at logging in.");
