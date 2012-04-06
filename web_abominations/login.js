@@ -14,7 +14,7 @@ function login(form) {
     alert('connected to ROS<br/>');
     if (form.username.value != null && form.password.value != null) {
        connection.callService('/login','[\"' + form.username.value + "\", \"" + form.password.value + '\"]',function(resp) {
-        if (resp != null && resp.token != 0) {
+        if (resp !== null && resp.token !== 0) {
           //go to the web abomination but also tell it stuff
           //Could put the token in the url, but not admin thing, super secret HTTP fun?
           var token = resp.token;
@@ -48,7 +48,7 @@ function newUser(form) {
   connection.setOnOpen(function (e) {
     if (form.username.value != null && form.password.value != null) {
       connection.callService('/create_user','[\"' + form.username.value + "\", \"" + form.password.value + '\"]',function(resp) {
-        if (resp != null && resp.token != 0) {
+        if (resp !== null && resp.token !== 0) {
           login(form);
         } else {
           alert("Bad try at logging in.");
