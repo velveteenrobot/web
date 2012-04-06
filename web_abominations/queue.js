@@ -23,10 +23,10 @@ function main() {
     self.location.href = url;
     return;
   }
-  var admin = adminMatches[1];
-  document.getElementById("queue").href = 'http://' + url_array[2] + "/web_abominations/queue.html";
-  document.getElementById("home").href = 'http://' + url_array[2] + "/web_abominations/web_abomination.html";
-  document.getElementById("write_program").href = 'http://' + url_array[2] + "/web_abominations/write_program.html";
+  var is_admin = adminMatches[1];
+  document.getElementById("queue").href = 'http://' + url_array[2] + "/web_abominations/queue.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin;
+  document.getElementById("home").href = 'http://' + url_array[2] + "/web_abominations/web_abomination.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin;
+  document.getElementById("write_program").href = 'http://' + url_array[2] + "/web_abominations/write_program.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin;
   
         /*var connection = null;
         try {
