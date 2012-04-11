@@ -1,6 +1,7 @@
 <!-- Begin
 
 function main() {
+  var program_queue = {};
   var url_array = window.location.href.split('/');
   var connection = new ros.Connection("ws://" + url_array[2] + ":9091");
   var connectInfo = document.location.toString();
@@ -36,6 +37,7 @@ function main() {
             return;
         }*/
 
+
   var url_array = window.location.href.split('/');
   var connection = new ros.Connection("ws://" + url_array[2] + ":9091");
   connection.setOnClose(function (e) {
@@ -48,6 +50,46 @@ function main() {
   connection.setOnOpen(function (e) {
     alert('connected to ROS<br/>');
     //only make the objects visible if rosbridge connected?
+
+    var t = setInterval(getQueue, 5000);
+    
+     function runProgram(id) {
+       connection.callService('/get_queue','[\"' + token.toString() + "\", \"" + id.toString() + '\"]',function(resp) {
+       });
+     }
+  
+     function getQueue() {
+       connection.callService('/get_queue','[]',function(resp) {
+         for (var j = 0; j < program_queue.length; j++) {
+           var queueDiv = document.getElementById("queue_div");
+           var olddiv = document.getElementById("div_" + program_queue[j].id.toString());
+           queueDiv.removeChild(olddiv);
+           //var oldbutton = document.getElementById("button_" + program_queue[j].id.toString());
+           //queueDiv.removeChild(oldbutton);
+           
+         }
+         program_queue = resp.programs;
+         for (var i = 0; i<resp.programs.length;i++) {
+           var queueDiv = document.getElementById("queue_div");
+           var element = document.createElement("div");
+            element.id = "div_" + resp.programs[i].id.toString();
+            var text = document.createElement("ol");
+            text.innerHTML = resp.programs[i].name
+            text.id = "text_"+ resp.programs[i].id.toString();
+            text.style = "display:inline-block; vertical-align:top;";
+            var button = document.createElement("button");
+            button.innerHTML = "Run";
+            button.id = "button_" + resp.programs[i].id.toString();
+            button.style="display:inline-block; vertical-align:top;";
+            button.onclick = runProgram(resp.programs[i].id);
+            element.appendChild(text);
+            element.appendChild(button);
+            queueDiv.appendChild(element);
+         }
+       });
+     }
+      
+   
   });
 }
 // End -->
