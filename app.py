@@ -218,12 +218,13 @@ def _AppDefinition_load_clients_entry(app_data, appfile="UNKNOWN"):
         if client_type == 'web':
             if manager_data.has_key('path'):
                 url = find_resource(manager_data['path'])
-                newurl = url.replace('/opt/ros/electric/stacks','')
-                if newurl == url:
-                    newurl = url.replace('/pr/1/applications/ros', '')
-                    manager_data['path'] = '/test' + newurl
-                else:
-                    manager_data['path'] = '/apps' + newurl          
+                url = url.replace('/opt/ros/electric/stacks','')
+                url = url.replace('/pr/1/applications/ros', '')
+                manager_data['path'] = '/apps' + url
+            if manager_data.has_key('testpath'):
+                url = find_resource(manager_data['testpath'])
+                url = url.replace('/pr/1/applications/ros', '')
+                
 
         app_data = c.get('app', {})
         if not type(app_data) == dict:
