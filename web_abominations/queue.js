@@ -50,11 +50,33 @@ function main() {
   connection.setOnOpen(function (e) {
     alert('connected to ROS<br/>');
     //only make the objects visible if rosbridge connected?
-
-    var t = setInterval(getQueue, 5000);
+    connection.callService('/dequeue_program', '[4813963303703651000,12]' ,function(resp) {
+      alert("Worked!");
+    });
+    var clear_button = document.getElementById("clear_button");
+    clear_button.onclick = function() {
+      var tkn = {"token": token};
+      //clearQueue();
+      //connection.callService('/dequeue_program', '[4813963303703651000,12]' ,function(resp) {
+      //alert("Worked!");
+      connection.callService('/clear_queue', '[' + parseInt(token) + ']' ,function(resp) {
+        alert(resp);
+      });
+    };
+    getQueue();
     
      function runProgram(id) {
-       connection.callService('/get_queue','[\"' + token.toString() + "\", \"" + id.toString() + '\"]',function(resp) {
+       connection.callService('/run_program', [parseInt(token),parseInt(id)],function(resp) {
+       });
+     }
+
+     function dequeue(id) {
+       connection.callService('/dequeue_program', '[4813963303703651000,12]' ,function(resp) {
+       });       
+     }
+
+     function clearQueue() {
+       connection.callService('/clear_queue', '[' + parseInt(token) + ']' ,function(resp) {
        });
      }
   
@@ -73,17 +95,30 @@ function main() {
            var queueDiv = document.getElementById("queue_div");
            var element = document.createElement("div");
             element.id = "div_" + resp.programs[i].id.toString();
-            var text = document.createElement("ol");
+            element.style="position:relative; text-align:right;";
+            var text = document.createElement("label");
             text.innerHTML = resp.programs[i].name
             text.id = "text_"+ resp.programs[i].id.toString();
-            text.style = "display:inline-block; vertical-align:top;";
-            var button = document.createElement("button");
-            button.innerHTML = "Run";
-            button.id = "button_" + resp.programs[i].id.toString();
-            button.style="display:inline-block; vertical-align:top;";
-            button.onclick = runProgram(resp.programs[i].id);
+            text.for = resp.programs[i].id.toString();
+            var delete_button = document.createElement("button");
+            delete_button.innerHTML = "Run";
+            delete_button.id = resp.programs[i].id.toString();
+            delete_button.onclick = function() {
+              var jsonthing = {"token": token, "id": this.id};
+              connection.callService('/dequeue_program', '[' + parseInt(token) + ',' + parseInt(this.id) + ']' ,function(resp) {
+                //alert("Worked!");
+                alert(resp);
+              }); 
+            };
+            var run_button = document.createElement("button");
+            run_button.innerHTML = "Run";
+            run_button.id = resp.programs[i].id.toString();
+            run_button.onclick = function() {
+              runProgram(this.id);
+            };
             element.appendChild(text);
-            element.appendChild(button);
+            element.appendChild(delete_button);
+            element.appendChild(run_button);
             queueDiv.appendChild(element);
          }
        });
