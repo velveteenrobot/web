@@ -46,7 +46,6 @@ function main() {
     alert('error!<br/>');
   });
   connection.setOnOpen(function (e) {
-    alert('connected to ROS<br/>');
     //only make the objects visible if rosbridge connected?
   });
 }

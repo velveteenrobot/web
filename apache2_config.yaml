@@ -1,0 +1,4 @@
+aliases:
+   test: /pr/1/applications/ros
+   apps: /opt/ros/electric/stacks
+
