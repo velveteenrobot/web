@@ -135,7 +135,7 @@ function main() {
               var left_corner = (screen.width - 600)/2;
               var top_corner = (screen.height - 600)/2;
               var w = window.open('', '', 'width=600,height=600,resizeable,scrollbars,top=' + top_corner.toString() + ',left=' + left_corner.toString() );
-              w.document.write(resp.program.code);
+              w.document.body.innerHTML = '<textarea id="code" name="code" rows="20" cols="150">' + resp.program.code + '</textarea>';
               w.document.close(); // needed for chrome and safari
             });
           }
