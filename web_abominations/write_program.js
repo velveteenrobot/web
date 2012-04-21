@@ -46,7 +46,7 @@ function main() {
   document.getElementById("queue").href = 'http://' + url_array[2] + "/web_abominations/queue.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin;
   document.getElementById("home").href = 'http://' + url_array[2] + "/web_abominations/web_abomination.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin;
   document.getElementById("write_program").href = 'http://' + url_array[2] + "/web_abominations/write_program.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin;
-  
+  document.getElementById("my_programs").href = 'http://' + url_array[2] + "/web_abominations/my_programs.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin;  
 
   var url_array = window.location.href.split('/');
   var connection = new ros.Connection("ws://" + url_array[2] + ":9091");
@@ -75,6 +75,13 @@ function main() {
         dropdown.options.add(item);
       }
     }
+
+    var logout_button = document.getElementById("logout_button");
+    logout_button.onclick = function() {
+      connection.callService('/logout', '[' + token + ']' ,function(resp) {
+        self.location.href = url;
+      });
+    };
     
     var save_button = document.getElementById("save_button");
     save_button.onclick = function() {

@@ -27,7 +27,8 @@ function main() {
   document.getElementById("queue").href = 'http://' + url_array[2] + "/web_abominations/queue.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin;
   document.getElementById("home").href = 'http://' + url_array[2] + "/web_abominations/web_abomination.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin;
   document.getElementById("write_program").href = 'http://' + url_array[2] + "/web_abominations/write_program.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin;
-  
+  document.getElementById("my_programs").href = 'http://' + url_array[2] + "/web_abominations/my_programs.html?tkn=" + token + "&uname=" + username + "&ad=" + is_admin; 
+
         /*var connection = null;
         try {
             connection = new ros.Connection('ws://' + address + ':' + port);
@@ -47,6 +48,16 @@ function main() {
   });
   connection.setOnOpen(function (e) {
     //only make the objects visible if rosbridge connected?
+    var logout_button = document.getElementById("logout_button");
+    logout_button.onclick = function() {
+      connection.callService('/logout', '[' + token + ']' ,function(resp) {
+        self.location.href = url;
+      });
+    };
+
+
   });
+
+
 }
 // End -->

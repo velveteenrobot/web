@@ -18,7 +18,7 @@ try:
         for key,value in y["aliases"].iteritems():
             g.write('DocumentRoot "/var/www"\n')
             g.write('Alias /' + key + ' ' + value + '\n')
-            g.write("        </Directory> " + value + '\n') 
+            g.write("        <Directory " + value + '>\n') 
             g.write('''                Options Indexes FollowSymLinks MultiViews
                 AllowOverride None
                 Order allow,deny
