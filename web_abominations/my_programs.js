@@ -82,6 +82,15 @@ function main() {
             });
             }
             element.appendChild(output_button);
+
+            var queue_button = document.createElement("button");
+            queue_button.innerHTML = "Add to Queue";
+            queue_button.id = resp.programs[i].id.toString();
+            queue_button.onclick = function() {
+              connection.callService('/queue_program', '[' + token + ',' + this.id + ']' ,function(resp) {
+              });
+            }
+            element.appendChild(queue_button);
           }
           var show_code = document.createElement("button");
           show_code.innerHTML = "Show Code";
