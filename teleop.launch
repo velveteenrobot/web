@@ -1,0 +1,10 @@
+<launch>
+  <node pkg="mjpeg_server" type="mjpeg_server"  name="mjpeg_server" output="screen">
+		<param name="port" type="int" value="8181" />
+  </node>
+  <node pkg="topic_tools" type="throttle" name="camera_throttle"
+        args="messages wide_stereo/left/image_color/compressed 5"/>
+  <node pkg="pr2_position_scripts" type="head_down.py" name="head_down" />
+  <node pkg="pr2_position_scripts" type="torso_down.py" name="torso_down" />
+</launch>
+

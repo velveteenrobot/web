@@ -1,53 +1,63 @@
-    <html>
-      <head>
-        <script type="text/javascript" src="http://brown-ros-pkg.googlecode.com/svn/tags/brown-ros-pkg/rosbridge/ros.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-      </head>
-    <body onload="main()" onunload="alert('Closing')">
-<FORM>
-<script type="text/javascript">
+<html>
+  <head>
+    <script type="text/javascript" src="http://brown-ros-pkg.googlecode.com/svn/tags/brown-ros-pkg/rosbridge/ros.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  </head>
+  <body onload="main()" onunload="alert('Closing')">
+    <FORM>
+      <script type="text/javascript">
 
-    function ConfirmClose() {
+    /*function ConfirmClose() {
       var deactive = confirm("Would you like to deactivate this robot?");
       if (deactivate) {
         var xmlHttpReq = CreateXmlHttpReq(function () {});
         XmlHttpGET(xmlHttpReq, "http://prm1.willowgarage.com/cgi-bin/control.py?action=STOP_ROBOT");
       }
     }
+    */
+    function deactivateRobot() {
+      var xmlHttpReq = CreateXmlHttpReq(function () {
+        window.open('', '_self', '');
+        window.close();
+      });
+      var array_url = window.location.href.split('/');
+      XmlHttpGET(xmlHttpReq, "http://" + array_url[2] + "/cgi-bin/control.py?action=STOP_ROBOT");
+        
+    }
+ 
+    function openExchange() {
+      var url_array = window.location.href.split('/');
+      var url = url_array[0];
+      for (var i=1; i<(url_array.length-1); i++) {
+        url = url + '/'+ url_array[i];
+      }
+      url = url + '/' + 'exchange.html';
+      window.open(url);
+    }
 
-        function deactivateRobot() {
-          var xmlHttpReq = CreateXmlHttpReq(function () {
-            window.open('', '_self', '');
-            window.close();
-          });
-          XmlHttpGET(xmlHttpReq, "http://prm1.willowgarage.com/cgi-bin/control.py?action=STOP_ROBOT");
-          
-        }
+    function CreateXmlHttpReq(handler) {
+      var xmlhttp = null;
+      if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        // users with activeX off
+        try {
+          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (e) {}
+      }
 
-        function CreateXmlHttpReq(handler) {
-          var xmlhttp = null;
+      if (xmlhttp) xmlhttp.onreadystatechange = handler;
 
-          if (window.XMLHttpRequest) {
-                xmlhttp = new XMLHttpRequest();
-          } else if (window.ActiveXObject) {
-            // users with activeX off
-            try {
-              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e) {}
-          }
+        return xmlhttp;
+    }    
 
-          if (xmlhttp) xmlhttp.onreadystatechange = handler;
-
-          return xmlhttp;
-        }    
-
-        // XMLHttp send GEt request
-        function XmlHttpGET(xmlhttp, url) {
-          try {
-            xmlhttp.open("GET", url, true);     
-            xmlhttp.send(null);
-          } catch (e) {}
-        }
+      // XMLHttp send GEt request
+    function XmlHttpGET(xmlhttp, url) {
+      try {
+        xmlhttp.open("GET", url, true);     
+        xmlhttp.send(null);
+      } catch (e) {}
+    }
 
     function main() {
       var allApps = {};
@@ -62,125 +72,114 @@
       var ourInterval;
       var ourInterval2;
       var returned = true;
+      var robot = "";
+      var robotType = "";
       var running_apps;
       var serv_returned = true;
       var skipEvict = false;
       var skipStart = false;
       var state;
-      var url = "http://prm1.willowgarage.com/cgi-bin/control.py?action=GET_STATE";
       var user;
       var xmlHttpReq;
+
+      var url_array = window.location.href.split('/');
+      var url = "http://" + url_array[2] + "/cgi-bin/control.py?action=GET_STATE";
 
       var IN_USE = 0;
       var OFF = 1;
       var VALID = 2;
-      window.onbeforeunload = function() {
-        return "Are you sure you want to leave this page bla bla bla?"; // you can make this dynamic, ofcourse...
-      };
 
-      var connection = new ros.Connection("ws://prm:9091");
+      var connection = new ros.Connection("ws://" + url_array[2] + ":9091");
         xmlHttpReq = CreateXmlHttpReq(function () {});
         if (xmlHttpReq) {
-          XmlHttpGET(xmlHttpReq,"http://prm1.willowgarage.com/cgi-bin/control.py");
+          XmlHttpGET(xmlHttpReq,"http://" + url_array[2] + "/cgi-bin/control.py");
         }
         function resultHandler () {
 	// request is 'ready'
 	  if (xmlHttpReq.readyState == 4) {
 		// success
-		if (xmlHttpReq.status == 200) {
-			alert("Success!");
-			alert(xmlHttpReq.responseText); //is the content that was received from the request
-                        var tags = xmlHttpReq.responseText.split(/\r\n|\r|\n/);
-                        //document.write(tags.length);
-                        for(var i=0;i<tags.length;i++){
-                          //document.write("TAG: <br/>");
-                          //document.write(tags[i]+"<br/>");
-                          if (tags[i] == "STATE_IN_USE") {
-                            state = IN_USE;
-                            //alert("In use");
-                          }
-                          if (tags[i] == "STATE_VALID") {
-                            state = VALID;
-                            alert("Valid!");
-                            skipStart = false;
-                            skipEvict = false;
-                            //document.body.innerHTML = "";
-                            newInterval = setInterval(showApps, 1000);
-                          }
-                          if (tags[i] == "STATE_OFF") {
-                            state = OFF;
-                            alert("Starting robot!");
-                            skipEvict = false;
-                            xmlHttpReq = CreateXmlHttpReq(startResultHandler);
-
-                            if (xmlHttpReq && !skipStart) {
-                              XmlHttpGET(xmlHttpReq, "http://prm1.willowgarage.com/cgi-bin/control.py?action=START_ROBOT");
-                            }
-
-                          }
-                          var splitLine = tags[i].split(" ");
-                          if (splitLine.length  > 1) {
-                            for(var j=0;j<splitLine.length;j++){
-                              if (splitLine[j] == "USER:") {
-                                if (!skipEvict) {
-                                  user = splitLine[j+1];
-                                  var evict = confirm("In use by: " + user +"\nWould you like to evict this user?");
-                                  if (evict) {
-                                    skipEvict = true;
-                                    xmlHttpReq = CreateXmlHttpReq(resultHandler);
-                                    if (xmlHttpReq) {
-                                      XmlHttpGET(xmlHttpReq, "http://prm1.willowgarage.com/cgi-bin/control.py?action=STOP_ROBOT");
-                                    
-                                    } 
-                                  } 
-                                 }
-                                  xmlHttpReq = CreateXmlHttpReq(resultHandler);
-                                  var m = 0;
-                                  while (state != OFF && state != VALID && m < 30) {
-                                    var t=setTimeout(function () {
-                                    XmlHttpGET(xmlHttpReq,"http://prm1.willowgarage.com/cgi-bin/control.py?action=GET_STATE"); 
-                                    },1000);
-                                    m++;
-                                  }      
-
-                              }
-                              if (splitLine[j] == "MESSAGE:") {
-                                message = splitLine[j+1];
-                                alert("Message is: " + message);
-                              }
-                            }  
-                          }
+            if (xmlHttpReq.status == 200) {
+              var tags = xmlHttpReq.responseText.split(/\r\n|\r|\n/);
+              for(var i=0;i<tags.length;i++){
+                if (tags[i] == "STATE_IN_USE") {
+                  state = IN_USE;
+                }
+                if (tags[i] == "STATE_VALID") {
+                  state = VALID;
+                  skipStart = false;
+                  skipEvict = false;
+                  newInterval = setInterval(showApps, 1000);
+                }
+                if (tags[i] == "STATE_OFF") {
+                  state = OFF;
+                  alert("Starting robot!");
+                  skipEvict = false;
+                  xmlHttpReq = CreateXmlHttpReq(startResultHandler);
+                  if (xmlHttpReq && !skipStart) {
+                    XmlHttpGET(xmlHttpReq, "http://" + url_array[2] + "/cgi-bin/control.py?action=START_ROBOT");
+                  }
+                }
+                var splitLine = tags[i].split(" ");
+                  if (splitLine.length  > 1) {
+                    for(var j=0;j<splitLine.length;j++){
+                      if (splitLine[j] == "USER:") {
+                        if (!skipEvict) {
+                          user = splitLine[j+1];
+                          var evict = confirm("In use by: " + user +"\nWould you like to evict this user?");
+                          if (evict) {
+                            skipEvict = true;
+                            xmlHttpReq = CreateXmlHttpReq(resultHandler);
+                            if (xmlHttpReq) {
+                              XmlHttpGET(xmlHttpReq, "http://" + url_array[2] + "/cgi-bin/control.py?action=STOP_ROBOT");
+                              
+                            } 
+                          } 
                         }
-                      }
+                        xmlHttpReq = CreateXmlHttpReq(resultHandler);
+                          var m = 0;
+                          while (state != OFF && state != VALID && m < 30) {
+                            var t=setTimeout(function () {
+                              XmlHttpGET(xmlHttpReq,"http://" + url_array[2] + "/cgi-bin/control.py?action=GET_STATE"); 
+                            },1000);
+                            m++;
+                          }      
 
-                        
-		} else {
+                        }
+                        if (splitLine[j] == "MESSAGE:") {
+                          message = splitLine[j+1];
+                          //alert("Message is: " + message);
+                        }
+                      }  
+                    }
+                  }
+                }
+                       
+              } else {
 			//alert("There was a problem retrieving the data.");
-		}
-	  
+	      }		  
         }
 
         function startResultHandler () {
         // request is 'ready'
           if (xmlHttpReq.readyState == 4) {
-                // success
-                //alert("Ready!");
-                if (xmlHttpReq.status == 200) {
-                  //alert("200 Okay!"); 
-                  var k = 0;
-                  if (xmlHttpReq) {
-                    xmlHttpReq = CreateXmlHttpReq(resultHandler);
-                    skipStart = true;
-                    while (state != VALID && k < 30) {
-                      var t=setTimeout( function () {
-                      XmlHttpGET(xmlHttpReq,"http://prm1.willowgarage.com/cgi-bin/control.py?action=GET_STATE");
-                      },1000);
-                      k++;
-                    }
-                  } else {
-                        alert("An error occured while attempting to process your request.");
-                  } 
+            // success
+            //alert("Ready!");
+            if (xmlHttpReq.status == 200) {
+              //alert("200 Okay!"); 
+              var k = 0;
+              if (xmlHttpReq) {
+                xmlHttpReq = CreateXmlHttpReq(resultHandler);
+                skipStart = true;
+                while (state != VALID && k < 30) {
+                  var t=setTimeout( function () {
+                    XmlHttpGET(xmlHttpReq,"http://" + url_array[2] + "/cgi-bin/control.py?action=GET_STATE");
+                  },1000);
+                  k++;
                 }
+              } else {
+                alert("An error occured while attempting to process your request.");
+              } 
+            }
           }
         } 
                     
@@ -209,53 +208,22 @@
             xmlhttp.send(null);
 	  } catch (e) {}
         }
-
-
-        function callListAppsService() {
-        connection.callService('/prm/list_apps','[]',function (arr) {
-            setAppLists(arr.running_apps,arr.available_apps);
-            });
-        }
-
-        function setAppLists(running,available) {
-          running_apps = running;
-          available_apps = available;
-        }
+        
  
         function deactivateRobot() {
           var xmlHttpReq = CreateXmlHttpReq(function () {
             window.close();
           });
-          XmlHttpGET(xmlHttpReq, "http://prm1.willowgarage.com/cgi-bin/control.py?action=STOP_ROBOT");
+          XmlHttpGET(xmlHttpReq, "http://" + url_array[2] + "/cgi-bin/control.py?action=STOP_ROBOT");
           
         }
-        //function showApps() {
 
-            //connection.callService('/prm/list_apps','[]',function (arr) {
-            //running_apps = arr.running_apps;
-            //available_apps = arr.available_apps;
-            //});
-
-         //document.body.innerHTML = "";
-         //do {
-            //connection.callService('/prm/list_apps','[]',function (arr) {
-            //running_apps = arr.running_apps;
-            //available_apps = arr.available_apps;
-            //});
-          //var newInterval = setInterval(showApps, 1000);
-            //setTimeout(function () {}, 1000);
-          
-
-          //connection.callService('/prm/list_apps','[]',function (arr) {
-          //  running_apps = arr.running_apps;
-          //  available_apps = arr.available_apps;
-          //  });
         function showApps(){
           if (serv_returned) {
             serv_returned = false;
             connection.callService('/rosjs/services','[]',function(arr) {
               for(var i=0;i<arr.length;i++){
-                if (arr[i].trim() == "/prm/list_apps") {
+                if (arr[i].trim() == "/" + robot + "/list_apps") {
                   appmanager_started = true;
                 } 
                 serv_returned = true;
@@ -266,143 +234,162 @@
 
           if (returned && appmanager_started) {
             returned = false;
-            connection.callService('/prm/list_apps','[]',function (arr) {
-            running_apps = arr.running_apps;
-            available_apps = arr.available_apps;
-            returned = true;
+            connection.callService('/' + robot + '/list_apps','[]',function (arr) {
+              running_apps = arr.running_apps;
+              available_apps = arr.available_apps;
+              returned = true;
             });
           }    
           
 
           if (available_apps != undefined)  {
 
-           clearInterval(newInterval);
+            clearInterval(newInterval);
            
-           document.body.innerHTML = "";
-           document.write('Available:<br/>'); 
-          for(var i=0;i<available_apps.length;i++){
-            if (available_apps[i].client_apps.length == 0 ) { 
-            document.write(available_apps[i].display_name+"<br/>");
-            allApps[available_apps[i].name] = available_apps[i].display_name;
-            var element = document.createElement("button");
-            element.innerHTML = "Start App!"
-            element.id = available_apps[i].name;
-            element.onclick = function() {
-              var launchFile = "[\"" + this.id  + "\"]";
-              connection.callService('/prm/start_app', launchFile,function(resp) {});
-              clearInterval(ourInterval2);
-              ourInterval2 = setInterval(showApps, 1000);
-
-            };
-            document.body.appendChild(element);
-            document.write("<br/>");
-            } else {
-              for (var j=0;j<available_apps[i].client_apps.length;j++) {
-                if (available_apps[i].client_apps[j].client_type == "web") {
-                            document.write(available_apps[i].display_name+"<br/>");
-            allApps[available_apps[i].name] = available_apps[i].display_name;
-            var element1 = document.createElement("button");
-            keyvalue = available_apps[i].client_apps[j].manager_data;
-            element1.innerHTML = "Start App!"
-            element1.id = available_apps[i].name;
-            element1.onclick = function() {
-              var launchFile1 = "[\"" + this.id  + "\"]";
-              connection.callService('/prm/start_app', launchFile1,function(resp) {});
-              if (keyvalue[0].key == "path") {
-                 var url_array = window.location.href.split('/');
-                 var url = 'http://' + url_array[2] + keyvalue[0].value;
-                 window.open(url);
+            document.body.innerHTML = "";
+            document.write('Installed:<br/>'); 
+            for(var i=0;i<available_apps.length;i++){
+              if (available_apps[i].client_apps.length == 0 ) { 
+                document.write(available_apps[i].display_name+"<br/>");
+                allApps[available_apps[i].name] = available_apps[i].display_name;
+                var element = document.createElement("button");
+                element.innerHTML = "Start App!"
+                element.id = available_apps[i].name;
+                element.onclick = function() {
+                  var launchFile = "[\"" + this.id  + "\"]";
+                  connection.callService('/' + robot + '/start_app', launchFile,function(resp) {});
+                  clearInterval(ourInterval2);
+                  ourInterval2 = setInterval(showApps, 1000);
+                };
+                document.body.appendChild(element);
+                document.write("<br/>");
+              } else {
+                for (var j=0;j<available_apps[i].client_apps.length;j++) {
+                  if (available_apps[i].client_apps[j].client_type == "web") {
+                    document.write(available_apps[i].display_name+"<br/>");
+                    allApps[available_apps[i].name] = available_apps[i].display_name;
+                    var element1 = document.createElement("button");
+                    keyvalue = available_apps[i].client_apps[j].manager_data;
+                    element1.innerHTML = "Start App!"
+                    element1.id = available_apps[i].name;
+                    element1.onclick = function() {
+                      var launchFile1 = "[\"" + this.id  + "\"]";
+                      connection.callService('/' + robot + '/start_app', launchFile1,function(resp) {});
+                      if (keyvalue[0].key == "path") {
+                        var url_array = window.location.href.split('/');
+                        var url = 'http://' + url_array[2] + keyvalue[0].value;
+                        window.open(url);
+                      } 
+                      clearInterval(ourInterval2);
+                      ourInterval2 = setInterval(showApps, 1000);
+                    };
+                    document.body.appendChild(element1);
+                    document.write("<br/>");
+                  }
+                }
               }
-              clearInterval(ourInterval2);
-              ourInterval2 = setInterval(showApps, 1000);
-            };
-            document.body.appendChild(element1);
-            document.write("<br/>");
-           }
-           }
-           }
             
-         }
-         document.write('Running:<br/>');
+            }  
+            document.write('Available:<br/>');
            
-          for(var i=0;i<running_apps.length;i++){
-            if (running_apps[i].display_name != ""){
-              document.write(running_apps[i].display_name+"<br/>");
-            } else {
-              document.write(allApps[running_apps[i].name]+"<br/>");
-            } 
-            var element = document.createElement("button");
-            element.innerHTML = "Stop App!";
-            element.id = running_apps[i].name;
-            element.onclick = function() { 
-              var appToStop = "[\"" + this.id + "\"]";
-              connection.callService('/prm/stop_app',appToStop,function(resp) {});
-              clearInterval(ourInterval);
-              ourInterval = setInterval(showApps, 1000);
-            }; 
+            for(var i=0;i<running_apps.length;i++){
+              if (running_apps[i].display_name != ""){
+                document.write(running_apps[i].display_name+"<br/>");
+              } else {
+                document.write(allApps[running_apps[i].name]+"<br/>");
+              } 
+              var element = document.createElement("button");
+              element.innerHTML = "Stop App!";
+              element.id = running_apps[i].name;
+              element.onclick = function() { 
+                var appToStop = "[\"" + this.id + "\"]";
+                connection.callService('/' + robot + '/stop_app',appToStop,function(resp) {});
+                clearInterval(ourInterval);
+                ourInterval = setInterval(showApps, 1000);
+              }; 
  
-            document.body.appendChild(element);
-            document.write("<br/>");
+              document.body.appendChild(element);
+              document.write("<br/>");
             }
-           var div = document.createElement("div");
-           div.id = "mydiv";
+            var div = document.createElement("div");
+            div.id = "mydiv";
 
-           div.className = "notice";
-           //div.style.display = "none";
-           div.style.float = "right";
+            div.className = "notice";
+            //div.style.display = "none";
+            div.style.float = "right";
            
-           // test case, append the div to the body
-           document.body.appendChild(div);
-           document.getElementById('mydiv').innerHTML='<input type="button" value="Deactivate Robot" onclick="deactivateRobot()" />';
-           }
-         }
+            // test case, append the div to the body
+            document.body.appendChild(div);
+            if (robotType === "pr2") {
+              var deactivateHTML = '<input type="button" value="Deactivate Robot" onclick="deactivateRobot()" />';
+              var exchangeHTML = '<input type="button" value="ROS Exchange" onclick="openExchange()" />';
+              document.getElementById('mydiv').innerHTML= [deactivateHTML, exchangeHTML].join("");
+            }
+          }
+        }
        
       //function startApp(
 
-      connection.setOnClose(function (e) {
-        document.write('connection closed<br/>');
-        xmlHttpReq = CreateXmlHttpReq(function () {});
-        if (xmlHttpReq) {
-          XmlHttpGET(xmlHttpReq,"http://prm1.willowgarage.com/cgi-bin/control.py");
-        }
-        window.location.reload();
-      });
-      connection.setOnError(function (e) {
-        document.write('error!<br/>');
-      });
-      connection.setOnOpen(function (e) {
-        document.write('connected to ROS<br/>');
-        serv_returned = false;
-        connection.callService('/rosjs/services','[]',function(arr) {
-          for(var i=0;i<arr.length;i++){
-            //document.write(arr[i]+"<br/>");
-            if (arr[i].trim() == "/prm/list_apps") {
-              appmanager_started = true;
-            } 
-            serv_returned = true;
-           }
-
+        connection.setOnClose(function (e) {
+          document.write('connection closed<br/>');
+          xmlHttpReq = CreateXmlHttpReq(function () {});
+          if (xmlHttpReq) {
+            XmlHttpGET(xmlHttpReq,"http://" + url_array[2] + "/cgi-bin/control.py");
+          }
+          window.location.reload();
         });
-        if (appmanager_started) {
-        returned = false; 
-        connection.callService('/prm/list_apps','[]',function (arr) {
-            //alert("Calling list apps initally!");
-            running_apps = arr.running_apps;
-            available_apps = arr.available_apps;
-            returned = true;
-            });
-        }
-        xmlHttpReq = CreateXmlHttpReq(resultHandler);
-        if (xmlHttpReq) {
-          XmlHttpGET(xmlHttpReq, url);
-        } else {
-          alert("An error occured while attempting to process your request.");
-        }
+        connection.setOnError(function (e) {
+          document.write('error!<br/>');
+        });
+        connection.setOnOpen(function (e) {
+          document.write('connected to ROS<br/>');
+          serv_returned = false;
+          connection.callService('/rosjs/get_param','["/robot/name"]',function(msg) {
+            robot = msg;
+            alert(msg);
+            connection.callService('/rosjs/services','[]',function(arr) {
+              for(var i=0;i<arr.length;i++){
+                //document.write(arr[i]+"<br/>");
+                if (arr[i].trim() == "/" + robot + "/list_apps") {
+                  appmanager_started = true;
+                } 
+                serv_returned = true;
+               }
 
+              if (appmanager_started) {
+                returned = false; 
+                connection.callService('/' + robot + '/list_apps','[]',function (arr) {
+                  //alert("Calling list apps initally!");
+                  running_apps = arr.running_apps;
+                  available_apps = arr.available_apps;
+                  returned = true;
+                });
+              }
+            //Tries control page if robot is of type pr2
+              connection.callService('/rosjs/get_param','["/robot/type"]',function(type) {
+                alert(type);
+                robotType = type;
+                if (robotType == "pr2") {
+                  xmlHttpReq = CreateXmlHttpReq(resultHandler);
+                  if (xmlHttpReq) {
+                    XmlHttpGET(xmlHttpReq, url);
+                  } else {
+                    alert("An error occured while attempting to process your request.");
+                  }
+                } else {
+                  newInterval = setInterval(showApps,1000);
+                }
+  
+              });
+
+
+            });
+
+          });
          
-      });
-    }
-        </script>
-</FORM>
-    </body>
-    </html>
+        });
+      }
+      </script>
+    </FORM>
+  </body>
+</html>
